@@ -1,0 +1,71 @@
+LeetCode Python Codes — 1 to 5
+1. Two Sum
+class Solution:   
+ def twoSum(self, nums, target):        
+for i in range(len(nums)):            
+for j in range(i + 1, len(nums)):               
+ if nums[i] + nums[j] == target:                   
+ return [i, j]
+
+
+
+2. Add Two Numbers
+class Solution:   
+ def addTwoNumbers(self, l1, l2):        
+dummy = ListNode(0)       
+ current = dummy        
+carry = 0       
+ while l1 or l2 or carry:          
+  x = l1.val if l1 else 0           
+ y = l2.val if l2 else 0            
+total = x + y + carry            
+carry = total // 10            
+current.next = ListNode(total % 10)           
+ current = current.next           
+ if l1:                
+l1 = l1.next            
+if l2:                
+l2 = l2.next        
+
+return dummy.next
+
+
+
+3. Longest Substring Without Repeating Characters
+class Solution:    
+def lengthOfLongestSubstring(self, s):        
+longest = 0       
+ for i in range(len(s)):          
+  seen = ""           
+ for j in range(i, len(s)):               
+ if s[j] in seen:                    
+break                
+seen += s[j]                
+longest = max(longest, len(seen))       
+ return longest
+
+
+
+4. Median of Two Sorted Arrays
+class Solution:    
+def findMedianSortedArrays(self, nums1, nums2):       
+ nums = sorted(nums1 + nums2)       
+ n = len(nums)       
+ if n % 2 == 1:            
+return nums[n // 2]       
+ else:            mid = n // 2          
+  return (nums[mid - 1] + nums[mid]) / 2.0
+
+
+
+5. Longest Palindromic Substring
+class Solution:    
+def longestPalindrome(self, s):        
+longest = ""        
+for i in range(len(s)):            
+for j in range(i, len(s)):                
+sub = s[i:j + 1]                
+if sub == sub[::-1]:                   
+ if len(sub) > len(longest):                       
+ longest = sub        
+return longest
